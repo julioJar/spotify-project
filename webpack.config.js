@@ -4,11 +4,10 @@ var webpack = require('webpack');
 var sourcePath = path.resolve(__dirname, 'src');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   context: __dirname,
   entry: {
-    main: './src/index.js',
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'redux-thunk']
+    main: './src/index.js'
   },
   output: {
     filename: '[name]-bundle.js',
@@ -55,8 +54,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: Infinity,
-      filename: 'vendor.bundle.js'
+      minChunks: (module) => {
+        return module.context && module.context.indexOf("node_modules") !== -1;
+      }
     }),
     new webpack.NamedModulesPlugin()
   ],

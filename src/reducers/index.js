@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
-import songs from './songs'
+import { combineReducers } from 'redux';
+import songsContainer from './songs';
+import myLibray from './myLibray';
 
 const rootReducer = combineReducers({
-  songs
+  songsContainer,
+  myLibray
 })
 
 export default rootReducer

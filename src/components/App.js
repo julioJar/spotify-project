@@ -1,19 +1,45 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import '../../styles/App.scss';
+import * as actions from '../actions';
 
 class App extends Component {
-  render() {
+  componentDidMount() {
+    this.props.addListSongs('muse', 'track', 20, 0);
+  }
+
+  _generateListSongs(songs) {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <ul>
+        {songs && songs.map((item, index) => {
+          return <li onClick={() => {this.props.addSong(songs[index])}} key={index}>{ item.name }</li>
+        })}
+      </ul>
+    );
+  }
+  render() {
+    const { songs, myLibray } = this.props;
+    console.log(myLibray)
+    return (
+      <div  className="App">
+        {this._generateListSongs(songs)}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isLoading: state.songsContainer.isLoading,
+  songs: state.songsContainer.songs,
+  myLibray: state.myLibray
+})
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(actions, dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
