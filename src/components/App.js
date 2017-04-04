@@ -6,22 +6,31 @@ import * as actions from '../actions';
 import SearchController from './SearchController';
 
 class App extends Component {
-  componentDidMount() {
-    //this.props.addListSongs('muse', 'track', 20, 0);
-  }
-
   _generateListSongs(songs) {
     return (
       <ul>
-        {songs && songs.map((item, index) => {
-          return <li onClick={() => {this.props.addSong(songs[index])}} key={index}>{ item.name }</li>
+        {songs && songs.map((song, index) => {
+          console.log(song);
+          return (
+            <li onClick={() => {this.props.addSong(songs[index])}} key={index}>
+              <p>{ song.name }</p>
+              <div>
+                <iframe
+                  src={`https://embed.spotify.com/?uri=${song.uri}`}
+                  width="80px"
+                  height="100px"
+                  frameBorder="0"
+                  allowTransparency="true"
+                  />
+              </div>
+            </li>
+          )
         })}
       </ul>
     );
   }
   render() {
     const { songs, myLibray, isLoading } = this.props;
-    console.log(isLoading)
 
     return (
       <div className="App">
