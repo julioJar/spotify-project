@@ -3,10 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../../styles/App.scss';
 import * as actions from '../actions';
+import SearchController from './SearchController';
 
 class App extends Component {
   componentDidMount() {
-    this.props.addListSongs('muse', 'track', 20, 0);
+    //this.props.addListSongs('muse', 'track', 20, 0);
   }
 
   _generateListSongs(songs) {
@@ -19,11 +20,13 @@ class App extends Component {
     );
   }
   render() {
-    const { songs, myLibray } = this.props;
-    console.log(myLibray)
+    const { songs, myLibray, isLoading } = this.props;
+    console.log(isLoading)
+
     return (
-      <div  className="App">
-        {this._generateListSongs(songs)}
+      <div className="App">
+        <SearchController addListSongs={this.props.addListSongs.bind(this)} />
+        { isLoading ? <h2>Is Loading....</h2> : this._generateListSongs(songs)}
       </div>
     );
   }
