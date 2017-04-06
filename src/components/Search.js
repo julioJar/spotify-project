@@ -24,8 +24,7 @@ class Search extends Component {
           onClick={() => {
             this.props.searchHandler(this.searchInput.value);
             this.searchInput.value = '';
-          }}
-        >
+          }}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>

@@ -1,0 +1,68 @@
+.ListContainer {
+  max-width: 60vw;
+  margin: 0 auto;
+  background-color: $blackMedium;
+  list-style: none;
+  text-decoration: none;
+  padding: 20px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.listItem {
+  position: relative;
+  background-color: $listItemBg;
+  margin: 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  .previewSong {
+    height: $listItemHeight;
+  }
+
+  .songDescription {
+    display: flex;
+    height: $listItemHeight;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 20px;
+    text-align: left;
+
+    .songTitle {
+      margin: 3px 0;
+    }
+
+    .songPopularity {
+      font-size: $fontSizeSecondary;
+    }
+
+    .songArtists {
+      font-size: $fontSizeSecondary;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      word-break: break-all;
+      max-height: 35px;
+      max-width: 90%;
+    }
+
+  }
+
+  .AddLibray {
+    background-color: $primaryWhite;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 20px;
+
+    &:hover {
+      background-color: $greenPrimaryBackground;
+      color: $primaryWhite;
+    }
+  }
+}

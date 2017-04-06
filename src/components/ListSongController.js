@@ -14,7 +14,7 @@ class ListSongController extends Component {
 
   render() {
     return (
-      <ul>
+      <ul className="ListContainer">
         { this.iterateAllsongsSearched() }
       </ul>
     )
