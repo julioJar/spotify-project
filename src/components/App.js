@@ -13,8 +13,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Spotify Track Searcher</h1>
         <SearchController addListSongs={this.props.addListSongs.bind(this)} />
-        { isLoading ? <h2>Is Loading....</h2> : <ListSongController songs={ this.props.songs } /> }
+        { isLoading  ? <img style={{width: 50}} src={require('../public/loader.gif')} /> : <ListSongController songs={ this.props.songs } /> }
       </div>
     );
   }

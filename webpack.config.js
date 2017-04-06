@@ -3,6 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var sourcePath = path.resolve(__dirname, 'src');
 var autoprefixer = require('autoprefixer');
+const imgSizeLimit = 2000; // img size is on bytes units
 
 const postCssLoader = {
   loader: 'postcss-loader',
@@ -49,6 +50,18 @@ module.exports = {
           postCssLoader
         ],
       },
+      {
+        test: /\.(png|jpg|gif|jpeg|svg|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            query: {
+              limit: imgSizeLimit,
+              name: 'assets/[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
