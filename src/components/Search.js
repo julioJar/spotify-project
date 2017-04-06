@@ -4,19 +4,30 @@ import React, { Component } from 'react';
 class Search extends Component {
   constructor() {
     super();
-    this.searchInput = null;
+    this.state = {
+      searchFocus: false
+    }
+    this.searchInput = null
   }
 
   render() {
+    let classes = `searchbox ${this.state.searchFocus ? 'searchbox--active' : ''}`;
     return (
-      <div>
-        <input ref={(searchInput) => this.searchInput = searchInput} type="text" />
-        <button type="submit" onClick={(event) => {
-          event.preventDefault();
-          const val = this.searchInput.value;
-          this.props.searchHandler(val);
-        }
-        }>Search</button>
+      <div className={classes}>
+        <input
+          type="text"
+          ref={(input) => { this.searchInput = input}}
+          onFocus={ () => {this.setState({searchFocus: true})}}
+          onBlur={ () => {this.setState({searchFocus: false})}}
+        />
+        <button
+          onClick={() => {
+            this.props.searchHandler(this.searchInput.value);
+            this.searchInput.value = '';
+          }}
+        >
+          <i className="fa fa-search" aria-hidden="true"></i>
+        </button>
       </div>
     )
   }

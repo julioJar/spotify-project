@@ -2,6 +2,16 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var sourcePath = path.resolve(__dirname, 'src');
+var autoprefixer = require('autoprefixer');
+
+const postCssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    plugins: () => {
+      return [autoprefixer];
+    }
+  }
+};
 
 module.exports = {
   devtool: 'source-map',
@@ -35,7 +45,8 @@ module.exports = {
             options: {
               sourceMap: true
             }
-          }
+          },
+          postCssLoader
         ],
       },
     ]

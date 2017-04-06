@@ -1,5 +1,7 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+import { RECEIVE_LIST, REQUEST_LIST, ADD_SONG, REMOVE_SONG } from './actionTypes';
+
 
 function fetchSongList (query, type, limit, pagination) {
 	return fetch(`https://api.spotify.com/v1/search?q=${query}&offset=${pagination * limit}&type=${type}&market=US&limit=${limit}`);
@@ -7,20 +9,28 @@ function fetchSongList (query, type, limit, pagination) {
 
 const receiveList = (songList) => {
 	return {
-		type: 'RECEIVE_LIST',
+		type: RECEIVE_LIST,
 		songList
 	}
 }
 
 const requestList = () => {
 	return {
-		type: 'REQUEST_LIST'
+		type: REQUEST_LIST
 	}
 }
+
 export const addSong = (song) => {
 	return {
-		type: 'ADD_SONG',
+		type: ADD_SONG,
 		song
+	}
+}
+
+export const removeSong = (songId) => {
+	return {
+		type: REMOVE_SONG,
+		songId
 	}
 }
 
