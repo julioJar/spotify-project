@@ -8,3 +8,6 @@
 1. install the lastest stable node js.
 2. Go to bash/terminal and write `npm i`.
 3. to start and preview the project write in your terminal/bash `npm start` and look how a window is opened at localhost:3000.
+
+#Architecture
+### This project was developed in react, and all the data layer on redux, all the bundle and packaging were manage with webpack.
