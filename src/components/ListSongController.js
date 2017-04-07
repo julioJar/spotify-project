@@ -7,7 +7,12 @@ class ListSongController extends Component {
   iterateAllsongsSearched() {
     return this.props.songs.map((song, index) => {
         return (
-          <ListSongItem song={song} key={`search-${index}`} />
+          <ListSongItem
+            removeSong={this.props.removeSong}
+            addSong={this.props.addSong}
+            librarySongs={this.props.library.librarySongs}
+            song={song} key={`search-${index}`}
+          />
         )
       });
   }

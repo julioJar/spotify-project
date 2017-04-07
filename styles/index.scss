@@ -2,11 +2,22 @@
 @import 'normalize.css';
 @import 'search.scss';
 @import 'list.scss';
+@import 'notification.scss';
+@import 'myLibray.scss';
 
 body {
   background-color: seagreen;
   background-color: #262626;
   font-family: 'Roboto', sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+a {
+  color: $primaryWhite;
+  text-decoration: none;
 }
 
 *,

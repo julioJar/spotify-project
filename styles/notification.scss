@@ -1,0 +1,25 @@
+.NotificationButton {
+  position: relative;
+  background-color: $greenPrimaryBackground;
+  outline: none;
+  border: none;
+  color: $primaryWhite;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 10px;
+}
+
+.NotificationGlobe {
+  font-size: $fontSizeSecondary;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: $primaryWhite;
+  right: 0;
+  top: -10px;
+  border-radius: 10px;
+  color: $blackMedium;
+  padding-left: 1px;
+  line-height: 1.7;
+}
