@@ -19,6 +19,16 @@ class Search extends Component {
           ref={(input) => { this.searchInput = input}}
           onFocus={ () => {this.setState({searchFocus: true})}}
           onBlur={ () => {this.setState({searchFocus: false})}}
+          onKeyDown={(e) => {
+            if(e.key === 'Enter'){
+              e.preventDefault();
+              this.props.searchHandler(this.searchInput.value);
+              this.searchInput.value = '';
+
+            } else if(e.key === 'Escape') {
+              this.searchInput.value = '';
+            }
+          }}
         />
         <button
           onClick={() => {
