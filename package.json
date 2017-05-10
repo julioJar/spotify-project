@@ -15,8 +15,10 @@
   "scripts": {
     "test": "jest --coverage --watchAll",
     "start": "webpack-dev-server --open",
-    "build": "rm -rf build & webpack -w"
+    "build": "rm -rf build & webpack",
+    "start:prod": "node server.js"
   },
+  "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
