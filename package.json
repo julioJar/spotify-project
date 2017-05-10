@@ -15,7 +15,8 @@
   "scripts": {
     "test": "jest --coverage --watchAll",
     "start": "webpack-dev-server --open",
-    "build": "rm -rf build & webpack -w"
+    "build": "rm -rf build & webpack",
+    "start:prod": "npm run build && node server.js"
   },
   "jest": {
     "moduleNameMapper": {
